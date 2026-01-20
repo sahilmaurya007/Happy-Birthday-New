@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Upasna | Future Doctor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f9f7fe 0%, #e3f2fd 100%);
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 40px 0 20px;
+            position: relative;
+        }
+        
+        .birthday-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            color: #e63946;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #1d3557;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        
+        .doctor-icon {
+            font-size: 3rem;
+            color: #457b9d;
+            margin: 0 15px;
+            animation: pulse 2s infinite;
+        }
+        
+        /* 3D Animation Area */
+        .animation-area {
+            perspective: 1000px;
+            height: 300px;
+            margin: 40px auto;
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .birthday-cake {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            transform-style: preserve-3d;
+            transform: translate(-50%, -50%) rotateX(20deg) rotateY(20deg);
+            animation: rotateCake 20s infinite linear;
+        }
+        
+        .cake-layer {
+            position: absolute;
+            width: 150px;
+            height: 50px;
+            background: linear-gradient(to bottom, #ffafbd, #ffc3a0);
+            border-radius: 10px;
+            transform-origin: center center;
+        }
+        
+        .layer-1 {
+            transform: translateY(-30px);
+            width: 180px;
+            height: 60px;
+            background: linear-gradient(to bottom, #a8edea, #fed6e3);
+        }
+        
+        .layer-2 {
+            transform: translateY(30px);
+            width: 120px;
+            height: 40px;
+            background: linear-gradient(to bottom, #fbc2eb, #a6c1ee);
+        }
+        
+        .candle {
+            position: absolute;
+            width: 10px;
+            height: 40px;
+            background: #ff9a9e;
+            top: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .flame {
+            position: absolute;
+            width: 20px;
+            height: 40px;
+            background: #ffecd2;
+            border-radius: 50% 50% 20% 20%;
+            top: -120px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: flicker 0.5s infinite alternate;
+            box-shadow: 0 0 20px #ff9a00;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .content-section:hover {
+            transform: translateY(-10px);
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #1d3557;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #a8dadc;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 15px;
+            color: #e63946;
+        }
+        
+        .quote-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 5px solid #457b9d;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 15px 15px 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .quote-author {
+            text-align: right;
+            font-weight: 600;
+            color: #1d3557;
+            margin-top: 10px;
+        }
+        
+        .message-box {
+            background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .message-box:before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(45deg);
+        }
+        
+        .heart {
+            color: #e63946;
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+        }
+        
+        /* Floating Elements */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .heart-icon {
+            position: absolute;
+            color: rgba(230, 57, 70, 0.3);
+            font-size: 24px;
+            animation: floatAround 15s infinite linear;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #1d3557;
+            font-size: 1.1rem;
+            margin-top: 40px;
+            border-top: 1px solid rgba(29, 53, 87, 0.1);
+        }
+        
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #e63946;
+            margin-top: 10px;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        @keyframes rotateCake {
+            0% { transform: translate(-50%, -50%) rotateX(20deg) rotateY(0deg); }
+            100% { transform: translate(-50%, -50%) rotateX(20deg) rotateY(360deg); }
+        }
+        
+        @keyframes flicker {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.1); }
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        @keyframes floatAround {
+            0% { 
+                transform: translate(0, 0) rotate(0deg); 
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { 
+                transform: translate(100px, 100vh) rotate(360deg); 
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .birthday-title {
+                font-size: 3rem;
+            }
+            
+            .subtitle {
+                font-size: 1.8rem;
+            }
+            
+            .animation-area {
+                height: 250px;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="hearts-container"></div>
+    
+    <div class="container">
+        <header>
+            <h1 class="birthday-title">Happy Birthday Upasna!</h1>
+            <h2 class="subtitle">Future Doctor <i class="fas fa-stethoscope doctor-icon"></i></h2>
+            <p style="font-size: 1.3rem; color: #457b9d; max-width: 800px; margin: 0 auto;">
+                Wishing you a day filled with love, joy, and all the happiness you bring to others every day.
+            </p>
+        </header>
+        
+        <div class="animation-area">
+            <div class="birthday-cake">
+                <div class="cake-layer layer-1"></div>
+                <div class="cake-layer"></div>
+                <div class="cake-layer layer-2"></div>
+                <div class="candle"></div>
+                <div class="flame"></div>
+            </div>
+        </div>
+        
+        <section class="content-section">
+            <h2 class="section-title"><i class="fas fa-heart"></i> My Love & Wishes</h2>
+            <div class="message-box">
+                <p style="font-size: 1.3rem; line-height: 1.6;">
+                    Dear Upasna, on your special day, I want you to know how incredibly proud I am of you. 
+                    Your dedication to becoming a doctor is inspiring, and your compassionate heart will 
+                    make you an amazing physician. I'm so lucky to have you in my life, and I can't wait 
+                    to see all the wonderful things you'll achieve. Happy Birthday, my love!
+                    <span class="heart"><i class="fas fa-heart"></i></span>
+                </p>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2 class="section-title"><i class="fas fa-quote-left"></i> Love Quotes</h2>
+            <div class="quote-box">
+                <p>"Love is not about how many days, months, or years you have been together. Love is about how much you love each other every single day."</p>
+                <div class="quote-author">- Unknown</div>
+            </div>
+            <div class="quote-box">
+                <p>"The best thing to hold onto in life is each other."</p>
+                <div class="quote-author">- Audrey Hepburn</div>
+            </div>
+            <div class="quote-box">
+                <p>"I saw that you were perfect, and so I loved you. Then I saw that you were not perfect and I loved you even more."</p>
+                <div class="quote-author">- Angelita Lim</div>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2 class="section-title"><i class="fas fa-star"></i> Motivation for Future Doctor</h2>
+            <div class="quote-box">
+                <p>"The good physician treats the disease; the great physician treats the patient who has the disease."</p>
+                <div class="quote-author">- William Osler</div>
+            </div>
+            <div class="quote-box">
+                <p>"Wherever the art of medicine is loved, there is also a love of humanity."</p>
+                <div class="quote-author">- Hippocrates</div>
+            </div>
+            <div class="quote-box">
+                <p>"To do what nobody else will do, in a way that nobody else can do, in spite of all we go through; that is what it is to be a doctor."</p>
+                <div class="quote-author">- Unknown</div>
+            </div>
+            <div class="message-box" style="background: linear-gradient(to right, #a8edea 0%, #fed6e3 100%);">
+                <p style="font-size: 1.2rem;">
+                    <strong>Upasna,</strong> your journey to become a doctor is a testament to your strength, intelligence, and compassion. 
+                    Every step you take brings healing to those in need and makes the world a better place. Keep shining!
+                </p>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2 class="section-title"><i class="fas fa-birthday-cake"></i> Birthday Countdown</h2>
+            <div style="text-align: center; padding: 20px;">
+                <div id="countdown" style="font-size: 2rem; color: #e63946; font-weight: 700;"></div>
+                <p style="margin-top: 15px; color: #1d3557;">Celebrating the amazing person you are!</p>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Made with <span class="heart"><i class="fas fa-heart"></i></span> for Upasna's Birthday</p>
+            <p class="signature">Happy Birthday My Love!</p>
+            <p style="margin-top: 20px; font-size: 1rem;">January 22nd - A day to celebrate the future doctor who will heal the world with her heart and hands.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Create floating hearts
+        const heartsContainer = document.getElementById('hearts-container');
+        for (let i = 0; i < 50; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-icon');
+            heart.innerHTML = '<i class="fas fa-heart"></i>';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = Math.random() * 100 + 'vh';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            heart.style.animationDuration = (Math.random() * 20 + 10) + 's';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heartsContainer.appendChild(heart);
+        }
+        
+        // Birthday countdown
+        function updateCountdown() {
+            const now = new Date();
+            const currentYear = now.getFullYear();
+            const birthday = new Date(currentYear, 0, 22); // January is month 0
+            
+            // If birthday has passed this year, set to next year
+            if (now > birthday) {
+                birthday.setFullYear(currentYear + 1);
+            }
+            
+            const diff = birthday - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            // Check if it's her birthday today
+            if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
+                document.getElementById('countdown').innerHTML = "🎉 Happy Birthday Upasna! 🎉";
+            } else if (now.getMonth() === 0 && now.getDate() === 22) {
+                document.getElementById('countdown').innerHTML = "🎉 Happy Birthday Upasna! 🎉";
+            } else {
+                document.getElementById('countdown').innerHTML = 
+                    `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }
+        }
+        
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+        
+        // Interactive cake animation on click
+        const cake = document.querySelector('.birthday-cake');
+        cake.addEventListener('click', function() {
+            this.style.animationPlayState = this.style.animationPlayState === 'paused' ? 'running' : 'paused';
+            
+            // Create explosion of hearts
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-icon');
+                heart.innerHTML = '<i class="fas fa-heart"></i>';
+                heart.style.left = '50%';
+                heart.style.top = '50%';
+                heart.style.fontSize = '20px';
+                heart.style.color = '#e63946';
+                heart.style.animation = 'floatAround 3s forwards';
+                heartsContainer.appendChild(heart);
+                
+                // Remove heart after animation
+                setTimeout(() => {
+                    heart.remove();
+                }, 3000);
+            }
+        });
+        
+        // Add a birthday message in console
+        console.log("%c🎂 Happy Birthday Upasna! 🎂", "color: #e63946; font-size: 24px; font-weight: bold;");
+        console.log("%cWishing you a day as amazing as you are, future doctor!", "color: #1d3557; font-size: 16px;");
+    </script>
+</body>
+</html>
